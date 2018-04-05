@@ -11,14 +11,14 @@ const squares = document.querySelectorAll(".square");
 const pickedColor = colors[3];
 const messageDisplay = document.getElementById("message");
 const colorDisplay = document.querySelector("#colorDisplay");
+colorDisplay.textContent = pickedColor;
 
-for(let i = 0; i < squares.length; i++) {
+for (let i = 0; i < squares.length; i++){
   squares[i].style.backgroundColor = colors[i];
-  squares[i].addEventListener("click", function () {
+  squares[i].addEventListener("click", function (){
     const clickedColor = this.style.backgroundColor;
     if (pickedColor === clickedColor) {
-      squares[i].style.backgroundColor = clickedColor;
-      document.querySelector("header").style.backgroundColor = clickedColor;
+      changeColors();
       messageDisplay.innerHTML = "CORRECT!";
     } else {
       this.style.backgroundColor = "#232323";
@@ -27,3 +27,9 @@ for(let i = 0; i < squares.length; i++) {
   });
 }
 
+function changeColors(){
+  for (let i = 0; i < squares.length; i++){
+    squares[i].style.backgroundColor = pickedColor;
+    document.querySelector("header").style.backgroundColor = pickedColor;
+  }
+}
