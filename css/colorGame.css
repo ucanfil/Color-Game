@@ -1,0 +1,71 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+html, body, section, div {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #232323;
+  color: white;
+}
+
+header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.header-style {
+  width: 100%;
+}
+
+h1 {
+  flex: 1 1 100%;
+  text-align: center;
+}
+
+nav {
+  width: 100%;
+  background-color: white;
+}
+
+.nav-style {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex: 1 1 100%;
+  justify-content: space-between;
+}
+
+.cards {
+  margin: 50px auto;
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.square {
+  flex: 1 1 32%;
+  max-width: 32%;
+  background-color: purple;
+  margin-bottom: 1.66%;
+}
+
+.square::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
