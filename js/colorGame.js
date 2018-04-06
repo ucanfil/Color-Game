@@ -1,40 +1,36 @@
 let colors = [];
 let num = 6;
-generateColorsArray(num);
-const squares = document.querySelectorAll(".square");
 let pickedColor = pickColor();
+const squares = document.querySelectorAll(".square");
 const messageDisplay = document.getElementById("message");
 const colorDisplay = document.querySelector("#colorDisplay");
-colorDisplay.textContent = pickedColor;
 const resetButton = document.querySelector(".nav-style button");
 const header = document.querySelector(".header-style");
 const easyButton = document.getElementById("easy");
 const hardButton = document.getElementById("hard");
-assignColors();
+const modeButtons = document.getElementsByClassName("mode");
 
-resetButton.addEventListener("click", function(){
-  reset();
-});
+init();
 
-easyButton.addEventListener("click", function(){
-  num = 3;
+function init(){
   reset();
-  easyButton.classList.add("current");
-  hardButton.classList.remove("current");
-  for (let i = 3; i < 6; i++){
-    squares[i].style.display = "none";
+  setupModeButtons();
+  resetButton.addEventListener("click", function () {
+    reset();
+  });
+};
+
+function setupModeButtons(){
+  for (let i = 0; i < modeButtons.length; i++) {
+    modeButtons[i].addEventListener("click", function () {
+      this.textContent === "Easy" ? num = 3 : num = 6;
+      modeButtons[0].classList.remove("current");
+      modeButtons[1].classList.remove("current");
+      this.classList.add("current");
+      reset();
+    });
   }
-});
-
-hardButton.addEventListener("click", function () {
-  num = 6;
-  reset();
-  easyButton.classList.remove("current");
-  hardButton.classList.add("current");
-  for (let i = 3; i < 6; i++) {
-    squares[i].style.display = "block";
-  }
-});
+}
 
 function reset(){
   resetButton.textContent = "NEW COLORS";
@@ -73,7 +69,12 @@ function generateColor(){
 
 function assignColors() {
   for (let i = 0; i < squares.length; i++) {
-    squares[i].style.backgroundColor = colors[i];
+    if (colors[i]) {
+      squares[i].style.display = "block";
+      squares[i].style.backgroundColor = colors[i];
+    } else {
+      squares[i].style.display = "none";
+    };
     squares[i].addEventListener("click", function () {
       const clickedColor = this.style.backgroundColor;
       if (pickedColor === clickedColor) {

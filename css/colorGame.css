@@ -99,7 +99,7 @@ button {
   -moz-transition: all 0.3s;
 }
 
-#easy, #hard {
+.mode {
   height: 100%;
 }
 
